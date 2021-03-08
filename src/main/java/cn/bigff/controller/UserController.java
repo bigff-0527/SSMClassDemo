@@ -25,6 +25,12 @@ public class UserController {
     }
 
 
+    @RequestMapping(value = "/ajaxDelete",method = RequestMethod.DELETE)
+    @ResponseBody
+    public String testAjaxDelete(UserPO user){
+        System.out.println(user.getName());
+        return "success";
+    }
 
     @PutMapping("edit")
     public String edit(UserPO userPO, Model model){

@@ -27,10 +27,17 @@
     <input type="submit">
 </form>
 
+<form action="/testPut" method="post" id="myform">
+
+    用户名：<input type="text" name="name" value="" id="name"/><br/>
+    年龄：<input type="text" name="age" value="" id="age"/><br/>
+    <input type="submit" value="testMethod"/>
+</form>
+
 <button id="btn-json">获取json</button>
 
-<input id="name" type="text">
-<input id="age" type="text">
+<%--<input id="name" type="text">--%>
+<%--<input id="age" type="text">--%>
 
 
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -43,6 +50,21 @@
             });
 
     })
+
+    $(".btn-primary").click(function (){
+        console.log($("#myform").serialize())
+        $.ajax({
+            url: "/ajaxPut",
+            type:"PUT",
+            dataType:"text",
+            data:$("#myform").serialize(),
+            success: function(data){
+                console.log(data)
+            }
+        });
+    })
+
+
 </script>
 
 </body>
