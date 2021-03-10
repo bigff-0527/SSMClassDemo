@@ -16,34 +16,80 @@
 
 <a href="/user/1">delete</a>
 <form action="/user/add" method="post">
-    <input type="text" name="name">
+    <input type="text" name="username">
     <input type="number" name="age">
     <input type="submit">
 </form>
 <form action="/user/edit" method="post">
     <input type="hidden" name="_method" value="put">
-    <input type="text" name="name">
+    <input type="text" name="username">
     <input type="number" name="age">
     <input type="submit">
 </form>
 
+<form action="/testPut" method="post" id="myform">
+
+    用户名：<input type="text" name="name" value="" id="name"/><br/>
+    年龄：<input type="text" name="age" value="" id="age"/><br/>
+    <input type="submit" value="testMethod"/>
+</form>
+
 <button id="btn-json">获取json</button>
 
-<input id="name" type="text">
-<input id="age" type="text">
+
+<button id="btn-userList">获取userList</button>
+
+<table id="listTable">
+    <tr>
+        <td>姓名</td>
+        <td>年龄</td>
+    </tr>
+</table>
+
+<%--<input id="name" type="text">--%>
+<%--<input id="age" type="text">--%>
+
 
 
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
 <script>
     $("#btn-json").click(function (){
-        alert(123);
             $.getJSON("/testAjax",function (data) {
                 $("#name").val(data.name);
                 $("#age").val(data.age);
             });
 
     })
+
+    $("#btn-userList").click(function (){
+        $.ajax({
+            url: "/user/list",
+            type: "get",
+            dataType:"json",
+            success: function(data){
+                console.log(data)
+                for (var i = 0; i<data.length; i++){
+                    var r = "<tr><td>"+data[i].username+"</td><td>"+data[i].age+"</td></tr>"
+                    $("#listTable").append(r);
+                }
+            }
+        });
+    })
+
+    // $(".btn-primary").click(function (){
+    //     $.ajax({
+    //         url: "/ajaxPut",
+    //         type:"PUT",
+    //         dataType:"text",
+    //         data:$("#myform").serialize(),
+    //         success: function(data){
+    //             console.log(data)
+    //         }
+    //     });
+    // })
+
+
 </script>
 
 </body>

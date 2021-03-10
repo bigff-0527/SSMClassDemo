@@ -13,11 +13,16 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("login")
+    public String login(){
+        return "login";
+    }
+
     @GetMapping("/testAjax")
     public @ResponseBody
     UserPO testAjax(){
         UserPO userPO = new UserPO();
-        userPO.setName("bigff");
+        userPO.setUsername("bigff");
         userPO.setAge(18);
         return userPO;
     }

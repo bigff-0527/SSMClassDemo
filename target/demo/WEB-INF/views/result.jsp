@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-succes!你好:${user.name}
+succes!你好:${user.username}
 
 </body>
 </html>
