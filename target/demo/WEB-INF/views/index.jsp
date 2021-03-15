@@ -46,6 +46,13 @@
     </tr>
 </table>
 
+<form action="/file" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="上传">
+</form>
+
+<a href="/download/test.txt/file">下载</a>
+
 <%--<input id="name" type="text">--%>
 <%--<input id="age" type="text">--%>
 
