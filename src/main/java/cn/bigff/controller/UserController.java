@@ -2,35 +2,42 @@ package cn.bigff.controller;
 
 
 import cn.bigff.domain.UserPO;
+import cn.bigff.service.IUserService;
+import cn.bigff.service.Impl.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
+    @Autowired
+    private IUserService userService;
+
     @PostMapping("add")
     public String  add(UserPO userPO ,Model model){
-        model.addAttribute("user",userPO);
+        userPO.setCreateTime(new Date());
+        int i = this.userService.insertUser(userPO);
+        model.addAttribute("message",i);
         return "result";
     }
 
-    @GetMapping("/list")
-    @ResponseBody
-    public List<UserPO> list(){
-        List<UserPO> userPOList = new ArrayList<>();
-        UserPO bigff = new UserPO("bigff",18);
-        UserPO zs = new UserPO("zs",19);
-        UserPO ls = new UserPO("ls",20);
-        userPOList.add(bigff);
-        userPOList.add(zs);
-        userPOList.add(ls);
-        return userPOList;
+    @GetMapping("list")
+    public String list(Model model){
+        List<UserPO> userPOS = userService.selectUserList();
+        model.addAttribute("userList",userPOS);
+        return "result";
     }
+
+
+
+
 
     @PostMapping("login")
     @ResponseBody

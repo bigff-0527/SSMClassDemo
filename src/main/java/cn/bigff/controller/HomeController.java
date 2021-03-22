@@ -19,6 +19,7 @@ import java.io.File;
 @Controller
 public class HomeController {
 
+
     @GetMapping("/")
     public String home(){
         return "index";
@@ -34,7 +35,7 @@ public class HomeController {
     UserPO testAjax(){
         UserPO userPO = new UserPO();
         userPO.setUsername("bigff");
-        userPO.setAge(18);
+
         return userPO;
     }
 

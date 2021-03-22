@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace为命名空间，应该是mapper接口的全称-->
+<mapper namespace="cn.bigff.dao.UserMapper">
+
+    <select id="selectUserList" resultType="cn.bigff.domain.UserPO">
+        select * from user
+    </select>
+
+    <insert id="insertUser"  parameterType="cn.bigff.domain.UserPO" >
+        insert into user(id,username,password,sex,create_time) values (#{id},#{username},#{password},#{sex},#{createTime})
+    </insert>
+
+
+</mapper>

@@ -4,23 +4,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserPO {
 
 //    private Long userId;
+    private Long id;
 
     private String username;
 
     private String password;
 
-    private int age;
+    private boolean sex;
 
-    public  UserPO(String username,int age){
-        this.username = username;
-        this.age = age;
-    }
+
+    private Date createTime;
 
 
 }

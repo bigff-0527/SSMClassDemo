@@ -53,6 +53,14 @@
 
 <a href="/download/test.txt/file">下载</a>
 
+
+<form action="/user/add" method="post" >
+    username<input name="username" type="text">
+    password<input name="password" type="password">
+    男<input name="sex" type="radio">女<input name="sex" type="radio">
+    <button type="submit">添加</button>
+</form>
+
 <%--<input id="name" type="text">--%>
 <%--<input id="age" type="text">--%>
 
